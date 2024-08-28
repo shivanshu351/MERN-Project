@@ -9,6 +9,19 @@ dotenv.config()
 
 app.use(express.json()) // allows us to accept request data in the json data in the req.body
 
+app.get('/api/products',async (req,res)=>{
+    try{
+        const products = await Product.find({});
+        res.send(products)
+        res.status(200).json({success:true,data:products})
+    }
+    catch(error)
+    {
+        res.status(500).json({success:false,message:"internal server error"})
+    }
+})
+
+
 app.post('/api/products', async (req, res) => {
     const product = req.body // user will send this data
 
