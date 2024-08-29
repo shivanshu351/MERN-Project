@@ -3,10 +3,12 @@ import dotenv from 'dotenv'
 import Product from './models/product.model.js'
 import connectDB from './config/db.js'
 import productRoutes from './routes/product.route.js'
+import cors from 'cors'
 
 const app = express()
 
 dotenv.config()
+app.use(cors())
 
 app.use(express.json()) // allows us to accept request data in the json data in the req.body
 
